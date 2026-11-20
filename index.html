@@ -1,99 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kawsar Ahmed | Applied Statistics &amp; Research</title>
-  <meta name="description" content="Kawsar Ahmed, Ph.D. Candidate in Applied Statistics at Central South University. Research, publications, news, opportunities, and CV.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academic website</title>
+<meta name="description" content="Academic profile: research, publications, news and CV.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div id="ann"></div>
-  <div id="progress" aria-hidden="true"></div>
-
-  <div class="bar">
-    <div class="bar-in">
-      <a class="brand" href="#top" id="brand"><b>KA</b> Kawsar Ahmed</a>
-      <div class="ctl" role="group" aria-label="Reading comfort and language">
-        <label for="langSelect" class="sr-only">Language</label>
-        <select id="langSelect" class="lang-select" aria-label="Select language">
-          <option value="en">English</option>
-          <option value="zh">中文 (Chinese)</option>
-          <option value="es">Español (Spanish)</option>
-          <option value="fr">Français (French)</option>
-        </select>
-        <button id="fdn" class="ghost" type="button" aria-label="Smaller text">A&minus;</button>
-        <button id="fup" class="ghost" type="button" aria-label="Larger text">A+</button>
-        <button id="theme" class="ghost" type="button">Theme</button>
-      </div>
+<a class="skip" href="#main">Skip to content</a>
+<div id="ann"></div>
+<div id="progress" aria-hidden="true"></div>
+<div class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top" id="brand"></a>
+    <div class="ctl" role="group" aria-label="Reading comfort">
+      <button id="fdn" class="ghost" type="button" aria-label="Smaller text">A&minus;</button>
+      <button id="fup" class="ghost" type="button" aria-label="Larger text">A+</button>
+      <button id="theme" class="ghost" type="button">Theme</button>
     </div>
   </div>
-
-  <header class="hero has-scene" id="top">
-    <img id="heroSceneImg" class="hero-scene-img" src="campus-scene.jpg" alt="" aria-hidden="true">
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="wrap hero-in">
-      <div id="profile">
-        <h1>Kawsar Ahmed</h1>
-        <p class="role">Ph.D. Candidate in Applied Statistics</p>
-        <p class="aff">School of Mathematics and Statistics, Central South University</p>
-        <p class="tag">Causal inference, high-dimensional data, and statistics for public health.</p>
-      </div>
-      <div id="art" aria-hidden="true"></div>
-    </div>
-  </header>
-
-  <div class="page">
-    <nav id="toc" aria-label="On this page"></nav>
-    <main id="main" tabindex="-1">
-      <noscript><p>This page needs JavaScript to display its content.</p></noscript>
-      <div id="content"></div>
-    </main>
-  </div>
-
-  <div id="emailModal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <div class="modal-head">
-        <h3 id="modalTitle">Send Email Inquiry</h3>
-        <button type="button" id="closeModalBtn" class="ghost" aria-label="Close dialog">&times;</button>
-      </div>
-      <p class="note" id="modalNote"></p>
-      <form id="directEmailForm">
-        <div class="form-row-2">
-          <label class="field">
-            <span id="lblSenderName">Your Name *</span>
-            <input type="text" id="senderName" required placeholder="Your name">
-          </label>
-          <label class="field">
-            <span id="lblSenderEmail">Your Email *</span>
-            <input type="email" id="senderEmail" required placeholder="you@example.com">
-          </label>
-        </div>
-        <label class="field">
-          <span id="lblSenderSubject">Topic / Subject</span>
-          <input type="text" id="senderSubject" placeholder="Postdoc / Collaboration / PhD / Industry inquiry">
-        </label>
-        <label class="field">
-          <span id="lblSenderMessage">Message *</span>
-          <textarea id="senderMessage" rows="4" required placeholder="Write your message here..."></textarea>
-        </label>
-        <div id="formFeedback" class="form-feedback" role="status" aria-live="polite" hidden></div>
-        <div class="modal-actions">
-          <button type="submit" id="submitEmailBtn" class="btn solid">Send Email</button>
-          <button type="button" id="copyDraftBtn" class="ghost">Copy Message</button>
-          <button type="button" id="cancelModalBtn" class="ghost">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <footer class="foot">
-    <div class="wrap" id="foot"></div>
-  </footer>
-
-  <button id="up" class="ghost" type="button" hidden>&uarr; Top</button>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+</div>
+<header class="hero" id="top">
+  <div class="wrap hero-in"><div id="profile"></div><div id="art" aria-hidden="true"></div></div>
+</header>
+<div class="page">
+  <nav id="toc" aria-label="On this page"></nav>
+  <main id="main" tabindex="-1">
+    <noscript><p>This page needs JavaScript to display its content.</p></noscript>
+    <div id="content"></div>
+  </main>
+</div>
+<footer class="foot"><div class="wrap" id="foot"></div></footer>
+<button id="up" class="ghost" type="button" hidden>&uarr; Top</button>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
