@@ -1,61 +1,566 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Kawsar Ahmed — academic research in causal inference, missing data and biostatistics. Selected publications and professional enquiries.">
-  <meta name="theme-color" content="#163b35">
-  <title>Kawsar Ahmed | Research & Academic Profile</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/site.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kawsar Ahmed | Statistics PhD · Open to Opportunities</title>
+  <meta name="description" content="Academic portfolio of Kawsar Ahmed, PhD candidate in Applied Statistics at Central South University. Research: causal inference, missing data, biostatistics.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =========================================
+       CSS VARIABLES (Edit colors & fonts here)
+       ========================================= */
+    :root {
+      --bg: #f9fafb;
+      --surface: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --primary: #1e3a5f;
+      --primary-light: #2b5a8c;
+      --accent: #b45309;
+      --accent-light: #d97706;
+      --border: #e5e7eb;
+      --tag-bg: #fef3c7;
+      --tag-text: #92400e;
+      --badge-green: #065f46;
+      --badge-green-bg: #d1fae5;
+      --badge-amber: #92400e;
+      --badge-amber-bg: #fef3c7;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Newsreader', Georgia, serif;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #93c5fd;
+      --primary-light: #bfdbfe;
+      --accent: #fbbf24;
+      --accent-light: #fcd34d;
+      --border: #334155;
+      --tag-bg: #422006;
+      --tag-text: #fde68a;
+      --badge-green: #6ee7b7;
+      --badge-green-bg: #064e3b;
+      --badge-amber: #fcd34d;
+      --badge-amber-bg: #422006;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* =========================================
+       BASE STYLES
+       ========================================= */
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary); margin-top: 0; line-height: 1.3; }
+    a { color: var(--primary-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent); }
+    img { max-width: 100%; }
+
+    /* Layout */
+    .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .section-header { margin-bottom: 32px; }
+    .section-header h2 { font-size: 1.9rem; margin-bottom: 8px; }
+    .section-header p { color: var(--text-muted); margin: 0; max-width: 600px; }
+
+    /* Utility */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.75rem; font-weight: 600; padding: 3px 10px;
+      border-radius: 20px; letter-spacing: 0.3px;
+    }
+    .badge-green { background: var(--badge-green-bg); color: var(--badge-green); }
+    .badge-amber { background: var(--badge-amber-bg); color: var(--badge-amber); }
+    .tag {
+      display: inline-block; background: var(--tag-bg); color: var(--tag-text);
+      font-size: 0.8rem; font-weight: 500; padding: 3px 10px; border-radius: 6px; margin: 0 4px 6px 0;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 18px; border-radius: 8px; font-size: 0.9rem;
+      font-weight: 600; cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-light); color: #fff; }
+    .btn-outline { background: transparent; color: var(--primary); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--primary); background: var(--surface); }
+
+    /* =========================================
+       TOP BAR
+       ========================================= */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 10px 0; backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      max-width: 920px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .topbar-brand { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; color: var(--primary); }
+    .topbar-brand span { color: var(--accent); }
+    .topbar-nav { display: flex; gap: 18px; }
+    .topbar-nav a { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+    .topbar-nav a:hover { color: var(--primary); }
+    .theme-toggle {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+      width: 36px; height: 36px; border-radius: 8px; cursor: pointer;
+      font-size: 1rem; transition: all 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* =========================================
+       HERO
+       ========================================= */
+    .hero { padding: 56px 0 48px; border-bottom: 1px solid var(--border); }
+    .hero-status { margin-bottom: 16px; }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 6px; letter-spacing: -0.5px; }
+    .hero-role { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 16px; }
+    .hero-lead { font-size: 1.05rem; color: var(--text); max-width: 680px; margin-bottom: 24px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.9rem; font-weight: 500; }
+    .hero-links a { color: var(--text-muted); }
+    .hero-links a:hover { color: var(--accent); }
+
+    /* =========================================
+       PATHWAY TABS
+       ========================================= */
+    .pathway-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
+      border-bottom: 2px solid var(--border); padding-bottom: 12px;
+    }
+    .pathway-tab {
+      background: none; border: none; font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .pathway-tab:hover { background: var(--bg); color: var(--text); }
+    .pathway-tab.active { background: var(--primary); color: #fff; }
+    .pathway-panel { display: none; }
+    .pathway-panel.active { display: block; animation: fadeIn 0.3s; }
+    .pathway-panel h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .pathway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+    .pathway-grid h4 { font-size: 0.95rem; margin-bottom: 8px; font-family: var(--font-body); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .pathway-grid ul { padding-left: 18px; margin: 0; font-size: 0.92rem; }
+    .pathway-grid li { margin-bottom: 6px; }
+    .pathway-cta { margin-top: 20px; display: flex; gap: 12px; }
+
+    /* =========================================
+       RESEARCH & PUBLICATIONS
+       ========================================= */
+    .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .research-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+    .research-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .research-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 10px; }
+
+    .pub-filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .pub-filter { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; font-weight: 600; padding: 5px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .pub-filter.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .pub-list { list-style: none; padding: 0; margin: 0; }
+    .pub-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 14px; box-shadow: var(--shadow); }
+    .pub-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+    .pub-year { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+    .pub-title { font-size: 1.05rem; font-weight: 600; color: var(--primary); margin-bottom: 4px; line-height: 1.4; }
+    .pub-authors { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px; }
+    .pub-authors strong { color: var(--text); }
+    .pub-venue { font-size: 0.88rem; color: var(--text-muted); font-style: italic; }
+    .pub-actions { margin-top: 10px; display: flex; gap: 12px; }
+    .pub-link { font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+
+    /* =========================================
+       NEWS TIMELINE
+       ========================================= */
+    .timeline { list-style: none; padding: 0; margin: 0; }
+    .timeline li { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline-date { font-size: 0.82rem; font-weight: 700; color: var(--accent); padding-top: 2px; }
+    .timeline-text { font-size: 0.92rem; }
+
+    /* =========================================
+       COLLABORATION
+       ========================================= */
+    .collab-box { background: var(--tag-bg); border-radius: var(--radius); padding: 28px 32px; border-left: 4px solid var(--accent); }
+    .collab-box h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .collab-box p { font-size: 0.95rem; margin: 0 0 16px; }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .footer { padding: 32px 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+
+    /* =========================================
+       MOBILE
+       ========================================= */
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2rem; }
+      .pathway-grid { grid-template-columns: 1fr; }
+      .timeline li { grid-template-columns: 1fr; gap: 4px; }
+      .topbar-nav { display: none; }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to main content</a>
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="Kawsar Ahmed home"><span class="brand-mark">KA<span>·</span></span><span class="brand-text">Kawsar Ahmed <small>Research homepage</small></span></a>
-    <nav aria-label="Main navigation"><a href="#about" data-i18n="navAbout">About</a><a href="#research" data-i18n="navResearch">Research</a><a href="#publications" data-i18n="navPublications">Publications</a><a href="#updates" data-i18n="navUpdates">Updates</a><a href="#contact" data-i18n="navContact">Contact</a></nav>
-    <div class="controls"><label class="sr-only" for="language">Language</label><select id="language" aria-label="Select language"><option value="en">English</option><option value="zh">中文</option><option value="es">Español</option><option value="fr">Français</option><option value="ar">العربية</option></select><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch dark mode">◐ <span data-i18n="theme">Theme</span></button></div>
-  </div>
-</header>
-<main id="main">
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-photo" role="img" aria-label="Campus scene at the School of Mathematics and Statistics"></div>
-    <div class="wrap hero-grid">
-      <div class="hero-copy"><p class="eyebrow" data-i18n="eyebrow">Applied statistics · Research & collaboration</p><h1 id="hero-heading">Kawsar Ahmed<span class="dot">.</span></h1><p class="hero-statement" data-i18n="heroStatement">Statistical methods for meaningful questions and reliable decisions.</p><p class="hero-summary" data-i18n="heroSummary">My work spans causal inference, missing data, biostatistics and quantitative analysis — connecting rigorous methodology with real-world evidence.</p>
-        <div class="hero-actions"><a class="btn primary" href="#research" data-i18n="exploreResearch">Explore research <span aria-hidden="true">↗</span></a><a class="btn outline" href="#publications" data-i18n="viewPublications">Selected publications</a></div>
-      </div>
-      <aside class="hero-note"><span class="mini-label" data-i18n="researchLens">RESEARCH LENS</span><p>Causal inference <span> / </span> Missing data <span> / </span> Public health statistics</p><div class="note-rule"></div><small data-i18n="heroNote">Methods, applications and interdisciplinary exchange.</small></aside>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand"><span>KA</span> · Academic Hub</div>
+      <nav class="topbar-nav">
+        <a href="#pathways">Opportunities</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#news">News</a>
+        <a href="#collaborate">Collaborate</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
     </div>
-  </section>
-  <div class="wrap content-wrap">
-    <section class="section about" id="about" aria-labelledby="about-title"><div class="section-side"><span class="index">01 / INTRODUCTION</span><h2 id="about-title" data-i18n="aboutTitle">About me</h2></div><div class="section-main"><p class="lead" data-i18n="aboutLead">I am a researcher in applied statistics interested in how we can draw trustworthy conclusions from complex and incomplete data.</p><p data-i18n="aboutBody">My research and applied work bring together causal methodology, public health, observational studies and quantitative evaluation. I am particularly interested in developing analysis that is both statistically rigorous and useful to researchers across disciplines.</p><div class="keywords"><span>Causal inference</span><span>Missing data</span><span>Biostatistics</span><span>Statistical computing</span></div></div></section>
-    <section class="section" id="research" aria-labelledby="research-title"><div class="section-side"><span class="index">02 / SCHOLARLY FOCUS</span><h2 id="research-title" data-i18n="researchTitle">Research directions</h2></div><div class="section-main"><div class="research-grid"><article class="research-card"><span class="card-no">01</span><h3>Causal inference & discovery</h3><p>Estimating causal relationships using statistical methods, high-dimensional data and machine learning.</p></article><article class="research-card"><span class="card-no">02</span><h3>Missing data & imputation</h3><p>Covariate adjustment, imputation and sensitivity to incomplete observations.</p></article><article class="research-card"><span class="card-no">03</span><h3>Biostatistics & public health</h3><p>Analysis of health outcomes and survey evidence, with careful study design and interpretation.</p></article><article class="research-card"><span class="card-no">04</span><h3>Quantitative evaluation</h3><p>Statistical analysis and reproducible reporting for applied policy and research questions.</p></article></div></div></section>
-    <section class="section" id="publications" aria-labelledby="publications-title"><div class="section-side"><span class="index">03 / SELECTED WORK</span><h2 id="publications-title" data-i18n="publicationsTitle">Publications</h2><p class="side-note" data-i18n="publicationNote">Selected peer-reviewed work. Article links lead to DOI records.</p></div><div class="section-main"><div class="publication"><div class="pub-meta"><span>2024</span><span>Public Health</span></div><h3>Prevalence of quitting decision and the impact of increased cigarette prices on the smoking behaviours among the male garment workers in Bangladesh</h3><p>Imamuzzaman, M., Hossain, M. B., Shahinuzzaman, M., Ahmed, K., et al.</p><a href="https://doi.org/10.1016/j.puhe.2024.11.020" target="_blank" rel="noopener noreferrer">Read publication <span aria-hidden="true">↗</span></a></div><div class="publication"><div class="pub-meta"><span>2024</span><span>Clean Technologies and Environmental Policy</span></div><h3>Environmental technology development and renewable energy transition role toward carbon-neutrality goals in G20 countries</h3><p>Liza, F. F., Ahmad, F., Wei, L., Ahmed, K., &amp; Rauf, A.</p><a href="https://doi.org/10.1007/s10098-024-02804-3" target="_blank" rel="noopener noreferrer">Read publication <span aria-hidden="true">↗</span></a></div></div></section>
-    <section class="section" id="updates" aria-labelledby="updates-title"><div class="section-side"><span class="index">04 / ACTIVITY</span><h2 id="updates-title" data-i18n="updatesTitle">Notes & updates</h2><p class="side-note" data-i18n="updatesNote">Brief milestones and announcements, newest first.</p></div><div class="section-main"><ol class="updates"><li><time datetime="2024-12">Dec 2024</time><div>Oral presentation at the 8th International Conference on the Role of Statistics and Data Science in 4IR, University of Rajshahi, Bangladesh.</div></li><li><time datetime="2024">2024</time><div>Co-authored peer-reviewed articles in <em>Public Health</em> and <em>Clean Technologies and Environmental Policy</em>.</div></li></ol></div></section>
-    <!-- OPTIONAL SECTION 1: To show, delete hidden and add an anchor in the navigation. -->
-    <section class="section" id="projects" hidden><div class="section-side"><span class="index">OPTIONAL / PROJECTS</span><h2>Projects & code</h2></div><div class="section-main"><article class="publication"><h3>Replace with your project title</h3><p>Explain the research question, your role, and the output. Add a GitHub link only when it exists.</p></article></div></section>
-    <!-- OPTIONAL SECTION 2: To show, delete hidden and replace the sample text. -->
-    <section class="section" id="talks" hidden><div class="section-side"><span class="index">OPTIONAL / PRESENTATIONS</span><h2>Talks & teaching</h2></div><div class="section-main"><p>Add selected conference talks, lectures and training sessions here.</p></div></section>
-    <!-- OPTIONAL SECTION 3: To show, delete hidden and replace the sample text. -->
-    <section class="section" id="opportunities" hidden><div class="section-side"><span class="index">OPTIONAL / WORK TOGETHER</span><h2>Opportunities</h2></div><div class="section-main"><p>Add your verified availability for postdoctoral, academic or industry research opportunities here. Do not make claims about current availability unless confirmed.</p></div></section>
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title"><div class="section-side"><span class="index">05 / CONNECT</span><h2 id="contact-title" data-i18n="contactTitle">Get in touch</h2></div><div class="section-main"><p class="lead" data-i18n="contactLead">For research conversations, collaborations or professional enquiries, please use the contact form.</p><p class="small-muted" data-i18n="privacyNote">My receiving email is not published on this website.</p>
-      <div class="social" aria-label="Academic and social profiles"><a href="https://github.com/Kahmedstats" target="_blank" rel="noopener noreferrer">GitHub ↗</a><span id="optionalSocialLinks">
-        <!-- No URLs are invented. Add your real profiles in assets/site.js. -->
-        <span class="social-placeholder" data-profile="Google Scholar" title="Profile URL not provided">Google Scholar · link pending</span>
-        <span class="social-placeholder" data-profile="ORCID" title="Profile URL not provided">ORCID · link pending</span>
-        <span class="social-placeholder" data-profile="LinkedIn" title="Profile URL not provided">LinkedIn · link pending</span>
-        <span class="social-placeholder" data-profile="ResearchGate" title="Profile URL not provided">ResearchGate · link pending</span>
-        <span class="social-placeholder" data-profile="YouTube" title="Profile URL not provided">YouTube · link pending</span>
-        <span class="social-placeholder" data-profile="WeChat" title="Add a public WeChat contact page or QR image, if desired">WeChat · link pending</span>
-        <span class="social-placeholder" data-profile="Facebook" title="Profile URL not provided">Facebook · link pending</span>
-        <span class="social-placeholder" data-profile="X" title="Profile URL not provided">X · link pending</span>
-      </span></div>
-      <form id="contactForm" action="https://formspree.io/f/mrpqagaa" method="POST"><div class="form-grid"><label><span data-i18n="nameLabel">Your name</span><input name="name" autocomplete="name" required maxlength="120"></label><label><span data-i18n="emailLabel">Your email</span><input name="email" type="email" autocomplete="email" required maxlength="150"></label></div><label><span data-i18n="topicLabel">Enquiry type</span><select name="topic" required><option value="research">Research collaboration</option><option value="academic">Academic opportunity</option><option value="industry">Industry / consulting</option><option value="other">Other</option></select></label><label><span data-i18n="messageLabel">Message</span><textarea name="message" rows="5" maxlength="5000" required></textarea></label><label class="consent"><input name="consent" type="checkbox" required><span data-i18n="consentLabel">I agree to submit my information for a response to this enquiry.</span></label><button class="btn primary" type="submit" id="sendButton" data-i18n="sendButton">Send enquiry</button><p class="form-status" id="formStatus" role="status" aria-live="polite">This form submits securely to Formspree. You will see a confirmation page after sending.</p></form>
-    </div></section>
   </div>
-</main>
-<footer class="footer"><div class="wrap footer-row"><span>© <span id="year">2026</span> Kawsar Ahmed</span><span data-i18n="footer">Personal academic homepage · GitHub Pages</span><a href="#top">Back to top ↑</a></div></footer>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-status">
+        <span class="badge badge-green">● Open to Postdoc & Faculty Positions</span>
+        <span class="badge badge-amber" style="margin-left:8px;">● Seeking Industry R&D Roles</span>
+      </div>
+      <h1>Kawsar Ahmed</h1>
+      <p class="hero-role">Ph.D. Candidate in Applied Statistics · Central South University</p>
+      <p class="hero-lead">I develop statistical methods for causal inference, missing data, and biostatistics. My goal is to build tools that turn complex, incomplete real-world data into reliable evidence for health and policy decisions.</p>
+      <div class="hero-actions">
+        <a href="#pathways" class="btn btn-primary">→ Explore What I Offer</a>
+        <a href="#publications" class="btn btn-outline">View Publications</a>
+        <a href="cv.pdf" class="btn btn-outline" target="_blank">Download CV</a>
+      </div>
+      <div class="hero-links">
+        <a href="mailto:kawsar_ahmed@csu.edu.cn">Email</a>
+        <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+        <a href="https://github.com/Kahmedstats" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- PATHWAYS -->
+    <section class="section" id="pathways">
+      <div class="section-header">
+        <h2>What Brings You Here?</h2>
+        <p>Select your role to see how we can work together.</p>
+      </div>
+
+      <div class="pathway-tabs" role="tablist">
+        <button class="pathway-tab active" data-target="postdoc">Postdoc Search</button>
+        <button class="pathway-tab" data-target="faculty">Faculty & Collaboration</button>
+        <button class="pathway-tab" data-target="phd">Prospective PhD Students</button>
+        <button class="pathway-tab" data-target="industry">Industry & R&D</button>
+      </div>
+
+      <!-- Postdoc Panel -->
+      <div class="pathway-panel active" id="postdoc">
+        <h3>I am seeking postdoctoral positions in statistical methodology.</h3>
+        <p>My research bridges theory and computation, with a focus on making inference robust when data are incomplete or complex.</p>
+        <div class="pathway-grid">
+          <div>
+            <h4>What I Bring</h4>
+            <ul>
+              <li>First-author methods paper under review (BART-assisted exponential tilting)</li>
+              <li>Applied experience in public health and clinical data</li>
+              <li>Strong computational skills in R, Stata, and Python</li>
+            </ul>
+          </div>
+          <div>
+            <h4>What I Am Looking For</h4>
+            <ul>
+              <li>Postdoctoral roles in statistics, biostatistics, or data science</li>
+              <li>Groups working on causal inference or missing data</li>
+              <li>Start date: Summer/Fall 2027</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pathway-cta">
+          <a href="mailto:kawsar_ahmed@csu.edu.cn?subject=Postdoc%20Enquiry" class="btn btn-primary">Email Me About a Postdoc</a>
+          <a href="cv.pdf" class="btn btn-outline" target="_blank">Download CV</a>
+        </div>
+      </div>
+
+      <!-- Faculty Panel -->
+      <div class="pathway-panel" id="faculty">
+        <h3>I welcome joint research and faculty collaborations.</h3>
+        <p>I am interested in projects that combine methodological innovation with applied problems in health, policy, and development.</p>
+        <div class="pathway-grid">
+          <div>
+            <h4>What I Offer</h4>
+            <ul>
+              <li>Method development for causal inference and imputation</li>
+              <li>Data management and analysis for multi-site studies</li>
+              <li>Experience translating statistical results for non-specialists</li>
+            </ul>
+          </div>
+          <div>
+            <h4>What I Seek</h4>
+            <ul>
+              <li>Co-authored papers and shared grant proposals</li>
+              <li>Visiting researcher exchanges</li>
+              <li>Interdisciplinary projects in public health and biostatistics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pathway-cta">
+          <a href="mailto:kawsar_ahmed@csu.edu.cn?subject=Collaboration%20Proposal" class="btn btn-primary">Propose a Collaboration</a>
+        </div>
+      </div>
+
+      <!-- PhD Panel -->
+      <div class="pathway-panel" id="phd">
+        <h3>Thinking about a PhD in Statistics?</h3>
+        <p>I am happy to share my experience with prospective students applying to programs in China or abroad.</p>
+        <div class="pathway-grid">
+          <div>
+            <h4>How I Can Help</h4>
+            <ul>
+              <li>Advice on preparing PhD applications and research statements</li>
+              <li>Insights into statistical research and life at Central South University</li>
+              <li>Guidance on English proficiency tests and scholarships</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Ask Me About</h4>
+            <ul>
+              <li>The application process and timelines</li>
+              <li>Research topics in causal inference and missing data</li>
+              <li>Funding opportunities for international students</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pathway-cta">
+          <a href="mailto:kawsar_ahmed@csu.edu.cn?subject=PhD%20Application%20Question" class="btn btn-primary">Ask a Question</a>
+        </div>
+      </div>
+
+      <!-- Industry Panel -->
+      <div class="pathway-panel" id="industry">
+        <h3>I am also open to industry roles in data science and analytics.</h3>
+        <p>My applied experience includes survey design, impact evaluation, and large-scale data management for government and public health projects.</p>
+        <div class="pathway-grid">
+          <div>
+            <h4>Relevant Skills</h4>
+            <ul>
+              <li>Statistical modeling and causal analysis in R and Python</li>
+              <li>Survey design, monitoring, and impact evaluation</li>
+              <li>Clear reporting of technical results to non-technical audiences</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Target Roles</h4>
+            <ul>
+              <li>Data Scientist / Statistician in health-tech or policy</li>
+              <li>Quantitative Researcher in development or consulting</li>
+              <li>Locations: Open to remote or relocation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pathway-cta">
+          <a href="mailto:kawsar_ahmed@csu.edu.cn?subject=Industry%20Opportunity" class="btn btn-primary">Email About a Role</a>
+          <a href="cv.pdf" class="btn btn-outline" target="_blank">Download CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+      <div class="section-header">
+        <h2>Research Directions</h2>
+        <p>My work focuses on making statistical inference reliable when data are incomplete, high-dimensional, or collected from complex designs.</p>
+      </div>
+      <div class="research-grid">
+        <div class="research-card">
+          <h3>Causal Inference & Discovery</h3>
+          <p>Developing methods for estimating causal effects in observational and experimental settings, with a focus on high-dimensional confounding.</p>
+          <span class="tag">Causal Inference</span><span class="tag">High-Dimensional Data</span>
+        </div>
+        <div class="research-card">
+          <h3>Missing Data & Imputation</h3>
+          <p>Unit-level imputation and covariate adjustment for nonignorable missingness, using flexible models like BART and exponential tilting.</p>
+          <span class="tag">Missing Data</span><span class="tag">BART</span>
+        </div>
+        <div class="research-card">
+          <h3>Biostatistics & Public Health</h3>
+          <p>Applied statistical studies on smoking behavior, COVID-19 severity, and environmental health in Bangladesh and beyond.</p>
+          <span class="tag">Biostatistics</span><span class="tag">Public Health</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications">
+      <div class="section-header">
+        <h2>Publications & Manuscripts</h2>
+        <p>Selected work. Full list available in my CV.</p>
+      </div>
+
+      <div class="pub-filters" id="pubFilters">
+        <button class="pub-filter active" data-filter="all">All</button>
+        <button class="pub-filter" data-filter="published">Published</button>
+        <button class="pub-filter" data-filter="review">Under Review</button>
+        <button class="pub-filter" data-filter="talk">Presentations</button>
+      </div>
+
+      <ul class="pub-list" id="pubList"></ul>
+    </section>
+
+    <!-- NEWS -->
+    <section class="section" id="news">
+      <div class="section-header">
+        <h2>Recent News & Updates</h2>
+      </div>
+      <ul class="timeline" id="newsList"></ul>
+    </section>
+
+    <!-- COLLABORATE -->
+    <section class="section" id="collaborate">
+      <div class="collab-box">
+        <h3>Let's Work Together</h3>
+        <p>Whether you are a postdoc committee, a potential collaborator, or an industry recruiter, I am happy to hear from you. I aim to reply within three working days.</p>
+        <a href="mailto:kawsar_ahmed@csu.edu.cn" class="btn btn-primary">Send an Email</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Kawsar Ahmed · Hosted on GitHub Pages · Last updated November 2026
+    </div>
+  </footer>
+
+  <script>
+    // =========================================
+    // EDIT THIS OBJECT ONLY TO UPDATE YOUR SITE
+    // =========================================
+    const DATA = {
+      publications: [
+        {
+          year: "2024",
+          type: "published",
+          status: "Published · Q1",
+          title: "Prevalence of quitting decision and the impact of increased cigarette prices on the smoking behaviours among the male garment workers in Bangladesh",
+          authors: "Imamuzzaman, M., Hossain, M. B., Shahinuzzaman, M., <strong>Ahmed, K.</strong>, et al.",
+          venue: "Public Health, 238, 83–89",
+          url: "https://doi.org/10.1016/j.puhe.2024.11.020"
+        },
+        {
+          year: "2024",
+          type: "published",
+          status: "Published · Q2",
+          title: "Environmental technology development and renewable energy transition role toward carbon-neutrality goals in G20 countries",
+          authors: "Liza, F. F., Ahmad, F., Wei, L., <strong>Ahmed, K.</strong>, & Rauf, A.",
+          venue: "Clean Technologies and Environmental Policy, 1–22",
+          url: "https://doi.org/10.1007/s10098-024-02804-3"
+        },
+        {
+          year: "Under Review",
+          type: "review",
+          status: "Under Review",
+          title: "Unit-Level Imputation for Covariate Adjustment in Random Arm",
+          authors: "<strong>Ahmed, K.</strong>, et al.",
+          venue: "Statistics (Taylor & Francis)",
+          url: ""
+        }
+      ],
+      news: [
+        { date: "Nov 2026", text: "Submitted manuscript to the Journal of Statistical Computation and Simulation." },
+        { date: "Oct 2026", text: "Presented research at the 8th International Conference on Statistics and Data Science, University of Rajshahi." },
+        { date: "Aug 2024", text: "Joined the Department of Public Health, Daffodil International University, as a researcher." }
+      ]
+    };
+
+    // =========================================
+    // RENDER FUNCTIONS (No need to edit below)
+    // =========================================
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) root.setAttribute('data-theme', savedTheme);
+    themeBtn.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Pathway tabs
+    document.querySelectorAll('.pathway-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.pathway-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.pathway-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+
+    // Publications
+    const pubList = document.getElementById('pubList');
+    function renderPubs(filter) {
+      const pubs = DATA.publications.filter(p => filter === 'all' || p.type === filter);
+      if (!pubs.length) {
+        pubList.innerHTML = '<li style="color:var(--text-muted);padding:20px 0;">No items in this category.</li>';
+        return;
+      }
+      pubList.innerHTML = pubs.map(p => `
+        <li class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">${p.year}</span>
+            <span class="badge ${p.type === 'published' ? 'badge-green' : 'badge-amber'}">${p.status}</span>
+          </div>
+          <div class="pub-title">${p.title}</div>
+          <div class="pub-authors">${p.authors}</div>
+          <div class="pub-venue">${p.venue}</div>
+          ${p.url ? `<div class="pub-actions"><a class="pub-link" href="${p.url}" target="_blank">View Article →</a></div>` : ''}
+        </li>
+      `).join('');
+    }
+    renderPubs('all');
+
+    document.querySelectorAll('.pub-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pub-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPubs(btn.dataset.filter);
+      });
+    });
+
+    // News
+    document.getElementById('newsList').innerHTML = DATA.news.map(n => `
+      <li><span class="timeline-date">${n.date}</span><span class="timeline-text">${n.text}</span></li>
+    `).join('');
+  </script>
+
 </body>
 </html>
